@@ -6,7 +6,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.ViewPropertyAnimatorCompat;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
@@ -16,6 +20,8 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import pl.droidsonroids.gif.GifImageView;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -28,6 +34,8 @@ public class SplashActivity extends AppCompatActivity {
     public int SET_TRANSLATE;
     private boolean animationStarted = false;
 
+    private GifImageView settingsGifView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
@@ -36,18 +44,59 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+
+        settingsGifView  = (GifImageView) findViewById(R.id.seting_gifview);
+
+       // settingsGifView.getBackground().Stop();
+
+       // settingsGifView.getAnimation().hasEnded();
+
+
+        Drawable drawable = settingsGifView.getDrawable();
+        if (drawable instanceof Animatable) {
+            ((Animatable) drawable).stop();
+        }
+
         SCREEN_SIZE =getScreenResolution(this);
 
-        if(SCREEN_SIZE >1300)
+        if(SCREEN_SIZE >1500)
         {
-            SET_TRANSLATE = -500;
+            SET_TRANSLATE = -560;
         }
-        else if(SCREEN_SIZE <=1300)
+        else if(SCREEN_SIZE <=1500)
         {
-            SET_TRANSLATE = -250;
+            SET_TRANSLATE = -300;
         }
 
+        settingsGifView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Drawable drawable = settingsGifView.getDrawable();
+                if (drawable instanceof Animatable) {
+                    ((Animatable) drawable).start();
+
+
+                }
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Drawable drawable = settingsGifView.getDrawable();
+                        if (drawable instanceof Animatable) {
+                            ((Animatable) drawable).stop();
+                        }
+                        Intent intent = new Intent(SplashActivity.this,SplashActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }, 750);
+            }
+        });
+
+
+
     }
+
 
 
     private int getScreenResolution(Context context)
@@ -59,7 +108,7 @@ public class SplashActivity extends AppCompatActivity {
         int width = metrics.widthPixels;
         int height = metrics.heightPixels;
 
-        Toast.makeText(SplashActivity.this , "Screen height is : "+ height , Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(SplashActivity.this , "Screen height is : "+ height , Toast.LENGTH_SHORT).show();
 
         return height ;
     }
@@ -77,6 +126,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void animate() {
+
         ImageView logoImageView = (ImageView) findViewById(R.id.img_logo);
         ViewGroup container = (ViewGroup) findViewById(R.id.container);
 
