@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"    >
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="68dp"
+        tools:ignore="HardcodedText"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="90dp"
+            android:alpha="0"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Choose your play mode"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+            android:textColor="#101010"
+            android:textSize="20sp"
+
+            tools:alpha="1"
+            />
+
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_choice1"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="18dp"
+            android:scaleX="0"
+            android:scaleY="0"
+            android:textStyle="bold"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/button_1"
+            android:text="Offline"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_choice2"
+            android:layout_width="200dp"
+            android:scaleX="0"
+            android:scaleY="0"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="18dp"
+            android:textColor="#2B2A2A"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_2"
+            android:text="Online"
+            />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:paddingTop="20dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:paddingBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/splash_src"
+        tools:visibility="gone"
+        />
+</FrameLayout>
