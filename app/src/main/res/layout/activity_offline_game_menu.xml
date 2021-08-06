@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FAFAFA"
+    tools:context=".OfflineGameMenuActivity">
+
+    <LinearLayout
+        android:id="@+id/container_offline_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="68dp"
+        tools:ignore="HardcodedText">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="90dp"
+            android:alpha="0"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Choose your play mode"
+            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+            android:textColor="#101010"
+            android:textSize="20sp"
+            android:textStyle="bold"
+
+            tools:alpha="1" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_choice1_offline_menu"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/button_1"
+            android:fontFamily="@font/poppins_medium"
+            android:scaleX="0"
+            android:scaleY="0"
+            android:text="With AI"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_choice2_offline_menu"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_2"
+            android:fontFamily="@font/poppins_medium"
+            android:scaleX="0"
+            android:scaleY="0"
+            android:text="With a friend"
+            android:textAllCaps="false"
+            android:textColor="#FF3D00"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+
+        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="30dp"
+            android:elevation="4dp"
+            card_view:cardBackgroundColor="@color/white"
+            card_view:cardCornerRadius="40dp">
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/seting_gifview_offline_menu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="7.5dp"
+                android:src="@drawable/settings_gif" />
+
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_logo_offline_menu"
+        android:paddingTop="20dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:paddingBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/splash_src"
+        tools:visibility="gone"
+        />
+</FrameLayout>

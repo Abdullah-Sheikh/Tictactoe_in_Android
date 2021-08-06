@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/app_main_theme_background.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/activity_offline_game_menu.xml" value="0.109375" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.375" />
       </map>
     </option>

@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.Display;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -23,7 +24,7 @@ import android.widget.Toast;
 
 import pl.droidsonroids.gif.GifImageView;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity implements View.OnTouchListener {
 
 
     public static final int STARTUP_DELAY = 300;
@@ -35,6 +36,7 @@ public class SplashActivity extends AppCompatActivity {
     private boolean animationStarted = false;
 
     private GifImageView settingsGifView;
+    private Button OfflineBtn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class SplashActivity extends AppCompatActivity {
 
 
         settingsGifView  = (GifImageView) findViewById(R.id.seting_gifview);
+        OfflineBtn = (Button) findViewById(R.id.btn_choice1);
 
        // settingsGifView.getBackground().Stop();
 
@@ -67,6 +70,15 @@ public class SplashActivity extends AppCompatActivity {
         {
             SET_TRANSLATE = -300;
         }
+
+        OfflineBtn.setOnTouchListener(this);
+        OfflineBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SplashActivity.this,OfflineGameMenuActivity.class);
+                startActivity(intent);
+            }
+        });
 
         settingsGifView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +137,11 @@ public class SplashActivity extends AppCompatActivity {
         super.onWindowFocusChanged(hasFocus);
     }
 
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
     private void animate() {
 
         ImageView logoImageView = (ImageView) findViewById(R.id.img_logo);
@@ -154,5 +171,18 @@ public class SplashActivity extends AppCompatActivity {
 
             viewAnimator.setInterpolator(new DecelerateInterpolator()).start();
         }
+    }
+
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        if (v == OfflineBtn) {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                v.setAlpha(0.5f);
+            } else {
+                v.setAlpha(1f);
+            }
+        }
+        return false;
     }
 }
