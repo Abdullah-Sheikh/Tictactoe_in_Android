@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"    >
+    android:background="#FAFAFA"    >
 
     <LinearLayout
         android:id="@+id/container"
@@ -67,6 +67,23 @@
             android:background="@drawable/button_2"
             android:text="Online"
             />
+
+
+        <androidx.cardview.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view"
+            android:layout_gravity="center"
+            android:layout_width="50dp"
+            card_view:cardBackgroundColor="@color/white"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="25dp"
+            android:elevation="10dp"
+            card_view:cardCornerRadius="40dp">
+
+
+
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 

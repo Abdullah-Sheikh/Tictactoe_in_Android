@@ -59,7 +59,7 @@ public class SplashActivity extends AppCompatActivity {
         int width = metrics.widthPixels;
         int height = metrics.heightPixels;
 
-        Toast.makeText(SplashActivity.this , "{" + width + "," + height + "}", Toast.LENGTH_SHORT).show();
+        Toast.makeText(SplashActivity.this , "Screen height is : "+ height , Toast.LENGTH_SHORT).show();
 
         return height ;
     }
