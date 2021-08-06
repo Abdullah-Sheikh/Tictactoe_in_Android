@@ -10,9 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tictactoe">
         <activity
+            android:name=".OfflineGetPlayersNamesActivity"
+            android:exported="true" />
+        <activity
             android:name=".OfflineGameMenuActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".SplashActivity"
             android:exported="true"
@@ -23,7 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
