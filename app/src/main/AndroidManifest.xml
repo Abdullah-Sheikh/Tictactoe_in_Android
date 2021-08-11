@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tictactoe">
         <activity
+            android:name=".ChooseSymbolActivity"
+            android:exported="true" />
+        <activity
             android:name=".OfflineGetPlayersNamesActivity"
             android:exported="true" />
         <activity
