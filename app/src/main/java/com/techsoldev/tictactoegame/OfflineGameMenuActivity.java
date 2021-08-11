@@ -74,10 +74,12 @@ public class OfflineGameMenuActivity extends AppCompatActivity implements View.O
         WithAFriendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  Intent intent = new Intent(SplashActivity.this,OfflineGameMenuActivity.class);
-             //   startActivity(intent);
+                Intent intent = new Intent(OfflineGameMenuActivity.this,OfflineGetPlayersNamesActivity.class);
+               startActivity(intent);
             }
         });
+
+
 
         settingsGifView.setOnClickListener(new View.OnClickListener() {
             @Override
