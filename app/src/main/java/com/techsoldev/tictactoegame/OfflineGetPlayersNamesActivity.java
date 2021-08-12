@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.ViewPropertyAnimatorCompat;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -92,6 +93,8 @@ public class OfflineGetPlayersNamesActivity extends AppCompatActivity implements
                 } else {
 
                     playerTwo = playerTwoName.getText().toString();
+                    Intent intent = new Intent(OfflineGetPlayersNamesActivity.this,ChooseSymbolActivity.class);
+                    startActivity(intent);
                 }
             }
         });

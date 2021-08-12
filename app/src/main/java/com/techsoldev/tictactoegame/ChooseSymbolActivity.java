@@ -3,8 +3,10 @@ package com.techsoldev.tictactoegame;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.RadioButton;
 
 public class ChooseSymbolActivity extends AppCompatActivity {
 
@@ -18,4 +20,7 @@ public class ChooseSymbolActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_choose_symbol);
     }
+
+
+
 }
