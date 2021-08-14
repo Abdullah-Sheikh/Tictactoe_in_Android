@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/drawable/rounded_corners.xml" value="0.2388888888888889" />
         <entry key="app/src/main/res/layout/activity_choose_symbol.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/activity_offline_game.xml" value="0.2296875" />
         <entry key="app/src/main/res/layout/activity_offline_game_menu.xml" value="0.109375" />
         <entry key="app/src/main/res/layout/activity_offline_get_players_names.xml" value="0.24375" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.375" />

@@ -70,6 +70,7 @@
             android:textAllCaps="false"
             android:fontFamily="@font/poppins_regular"
             android:textStyle="bold"
+            android:textColor="#5C5C5C"
 
             android:text="Player One "></TextView>
 
@@ -84,6 +85,8 @@
             android:layout_height="0dp"
             android:layout_marginLeft="40dp"
             android:hint="Nick Name"
+            android:textColor="#5C5C5C"
+            android:textColorHint="#6E6E6E"
             android:textSize="18dp"
             android:layout_marginRight="40dp"
             android:layout_weight="1.5"></EditText>
