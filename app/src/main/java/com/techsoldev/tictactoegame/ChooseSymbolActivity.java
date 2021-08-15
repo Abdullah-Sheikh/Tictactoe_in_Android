@@ -85,10 +85,8 @@ public class ChooseSymbolActivity extends AppCompatActivity implements View.OnTo
              @Override
              public void onClick(View v) {
 
-
-
-                 //Intent intent = new Intent(.this,Ch.class);
-                 // startActivity(intent);
+                 Intent intent = new Intent(    ChooseSymbolActivity.this,OfflineGameActivity.class);
+                  startActivity(intent);
              }
          });
     }
