@@ -1,9 +1,500 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:background="#F6F6F6"
     android:layout_height="match_parent"
     tools:context=".AiGameActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.75"
+
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"></View>
+
+        <ImageView
+            android:id="@+id/offline_game_back_btn"
+            android:layout_width="0dp"
+            android:padding="4dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/back_icon"></ImageView>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8.5"></View>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"></View>
+
+        <LinearLayout
+
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="27.5dp"
+            android:layout_marginBottom="13dp"
+            android:background="@drawable/count_background"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <TextView
+                android:id="@+id/player_two_won_txt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="6"
+                android:textSize="20dp"
+                android:textColor="#353535"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:fontFamily="@font/poppins_medium"
+                ></TextView>
+        </LinearLayout>
+
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"></View>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:weightSum="10"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.15"></View>
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/player_two_img"
+                android:layout_width="match_parent"
+                android:layout_weight="6.85"
+                android:layout_gravity="center"
+                android:layout_height="0dp"
+                android:src="@drawable/profile_img"
+                app:civ_shadow="true"
+                app:civ_shadow_radius="1dp"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.25"></View>
+
+            <TextView
+                android:id="@+id/player_two_name_txt"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2.5"
+                android:text="Jason B."
+                android:textSize="16dp"
+                android:textColor="#353535"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:fontFamily="@font/poppins_medium"
+                ></TextView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.15"></View>
+
+        </LinearLayout>
+
+
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"></View>
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_weight="4"
+        android:weightSum="10"
+        android:orientation="vertical"
+        android:background="@drawable/grid">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.85"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15"></View>
+            <ImageView
+                android:tag="1"
+                android:id="@+id/img_1"
+                android:layout_width="0dp"
+                android:layout_weight="3.1"
+                android:padding="15dp"
+                android:layout_height="match_parent"
+                ></ImageView>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15"></View>
+
+            <ImageView
+                android:tag="2"
+                android:id="@+id/img_2"
+                android:layout_width="0dp"
+                android:layout_weight="3.1"
+                android:padding="15dp"
+                android:layout_height="match_parent"
+                ></ImageView>
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15"></View>
+
+            <ImageView
+                android:tag="3"
+                android:id="@+id/img_3"
+                android:layout_width="0dp"
+                android:layout_weight="3.1"
+                android:padding="15dp"
+                android:layout_height="match_parent"
+                ></ImageView>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25"></View>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.15"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.85"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15"></View>
+            <ImageView
+                android:tag="4"
+                android:id="@+id/img_4"
+                android:layout_width="0dp"
+                android:layout_weight="3.1"
+                android:padding="15dp"
+                android:layout_height="match_parent"
+                ></ImageView>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15"></View>
+
+            <ImageView
+                android:tag="5"
+                android:id="@+id/img_5"
+                android:layout_width="0dp"
+                android:layout_weight="3.1"
+                android:padding="15dp"
+                android:layout_height="match_parent"
+                ></ImageView>
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15"></View>
+
+            <ImageView
+                android:tag="6"
+                android:id="@+id/img_6"
+                android:layout_width="0dp"
+                android:layout_weight="3.1"
+                android:padding="15dp"
+                android:layout_height="match_parent"
+                ></ImageView>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15"></View>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.15"></View>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15"></View>
+            <ImageView
+                android:tag="7"
+                android:id="@+id/img_7"
+                android:layout_width="0dp"
+                android:layout_weight="3.1"
+                android:padding="15dp"
+                android:layout_height="match_parent"
+                ></ImageView>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15"></View>
+
+            <ImageView
+                android:tag="8"
+                android:id="@+id/img_8"
+                android:layout_width="0dp"
+                android:layout_weight="3.1"
+                android:padding="15dp"
+                android:layout_height="match_parent"
+                ></ImageView>
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15"></View>
+
+            <ImageView
+                android:tag="9"
+                android:id="@+id/img_9"
+                android:layout_width="0dp"
+                android:layout_weight="3.1"
+                android:padding="15dp"
+                android:layout_height="match_parent"
+                ></ImageView>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15"></View>
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"></View>
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25"></View>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"></View>
+
+
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:weightSum="10"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.15"></View>
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/player_one_img"
+                android:layout_width="match_parent"
+                android:layout_weight="6.85"
+                android:layout_gravity="center"
+                android:layout_height="0dp"
+                android:src="@drawable/profile_img"
+
+                app:civ_shadow="true"
+                app:civ_shadow_radius="1dp"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.25"></View>
+
+            <TextView
+                android:id="@+id/player_one_name_txt"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2.5"
+                android:text="Jason B."
+                android:textSize="16dp"
+                android:textColor="#353535"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:fontFamily="@font/poppins_medium"
+                ></TextView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.15"></View>
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4.5"></View>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="27.5dp"
+            android:layout_marginBottom="13dp"
+            android:background="@drawable/count_background"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <TextView
+                android:id="@+id/player_one_win_count_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:text="6"
+                android:textColor="#353535"
+                android:textSize="20dp"></TextView>
+        </LinearLayout>
+
+
+
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"></View>
+
+
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.6"></View>
+
+
+    <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.65"
+        android:layout_gravity="center"
+        android:elevation="4dp"
+        card_view:cardBackgroundColor="@color/white"
+        card_view:cardCornerRadius="40dp">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/offline_game_seting_gifview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="7.5dp"
+            android:layout_gravity="center"
+            android:src="@drawable/settings_gif" />
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.25"></View>
+
+
+
+
+
+</LinearLayout>
