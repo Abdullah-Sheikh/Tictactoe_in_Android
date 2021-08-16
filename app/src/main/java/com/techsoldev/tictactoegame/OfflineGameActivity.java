@@ -40,7 +40,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
     private TextView playerOneWins, playerTwoWins;
     private TextView playerOneName, playerTwoName;
 
-    Dialog dialog;
+    Dialog dialog , drawdialog;
 
     int playerOneWinCount=0;
     int playerTwoWinCount=0;
@@ -78,6 +78,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
 
 
         dialog = new Dialog(this);
+        drawdialog = new Dialog(this);
 
 
 
@@ -413,9 +414,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
                             Box_3.setBackgroundResource(R.drawable.circle_background);
                             Box_5.setBackgroundResource(R.drawable.circle_background);
                             Box_7.setBackgroundResource(R.drawable.circle_background);
-
                         }
-
 
                         Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
@@ -426,12 +425,8 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
                             }
                         }, 750);
                         //Toast.makeText(this, "Player 0 wins", Toast.LENGTH_SHORT).show();
-
                     }
-
                     isGameActive = false;
-
-
                 }
             }
             else
@@ -439,14 +434,12 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
                 checkdraw();
             }
         }
-
-
     }
 
     void checkdraw()
     {
         boolean check = true;
-        for(int i =0 ;i<8;i++){
+        for(int i =0 ;i<=8;i++){
             if(filledPos[i]== -1)
             {
                 check= false;
@@ -454,8 +447,10 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         }
         if(check)
         {
-            Toast.makeText(getBaseContext(), "Match Draw", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(getBaseContext(), "Match Draw", Toast.LENGTH_SHORT).show();
             isGameActive = false;
+            DrawDialogfun();
+
         }
     }
 
@@ -480,10 +475,8 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-
               animationView.setVisibility(View.GONE);
               linearLayout.setVisibility(View.VISIBLE);
-
                 if(player_check==0) {
                     playerImg.setImageResource(R.drawable.cross);
                 } else  if(player_check==1) {
@@ -497,34 +490,59 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         quitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 dialog.dismiss();
                 Intent intent = new Intent(OfflineGameActivity.this, OfflineGameMenuActivity.class);
                 startActivity(intent);
-
             }
         });
 
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 dialog.dismiss();
                Restart();
-
             }
         });
 
-
-
         dialog.show();
+    }
+
+
+
+
+    private void    DrawDialogfun() {
+
+
+        drawdialog.setContentView(R.layout.draw_dialog);
+        drawdialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        Button quitBtn = drawdialog.findViewById(R.id.offline_game_draw_quit_btn);
+        Button continueBtn = drawdialog.findViewById(R.id.offline_game_draw_continue_btn);
+
+        quitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawdialog.dismiss();
+                Intent intent = new Intent(OfflineGameActivity.this, OfflineGameMenuActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        continueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawdialog.dismiss();
+                Restart();
+            }
+        });
+        drawdialog.show();
     }
 
 
     private void Restart()
     {
 
-        for(int i =0 ;i<8;i++){
+        for(int i =0 ;i<=8;i++){
            filledPos[i]= -1;
         }
 
