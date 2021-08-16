@@ -19,6 +19,10 @@ public class ChooseSymbolActivity extends AppCompatActivity implements View.OnTo
     private ImageView BackBtn , CrossImg , CrossRadioImg , CircleImg , CircleRadioImg;
     private Button ContinueBtn;
 
+    int PICK_SIDE ;
+    private String playerOne;
+    private String playerTwo;
+
 
      @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,9 @@ public class ChooseSymbolActivity extends AppCompatActivity implements View.OnTo
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_choose_symbol);
+
+         playerOne = getIntent().getStringExtra("p1");
+         playerTwo = getIntent().getStringExtra("p2");
 
         BackBtn= (ImageView) findViewById(R.id.pick_side_back_btn);
         CrossImg= (ImageView) findViewById(R.id.pick_side_cross_img);
@@ -43,6 +50,7 @@ public class ChooseSymbolActivity extends AppCompatActivity implements View.OnTo
              @Override
              public void onClick(View v) {
 
+                 PICK_SIDE = 0;
                  CrossRadioImg.setImageResource(R.drawable.radio_button_checked);
                  CircleRadioImg.setImageResource(R.drawable.radio_button_unchecked);
                  CircleImg.setAlpha(0.3f);
@@ -58,6 +66,7 @@ public class ChooseSymbolActivity extends AppCompatActivity implements View.OnTo
              public void onClick(View v) {
 
 
+                 PICK_SIDE= 1;
                  CircleRadioImg.setImageResource(R.drawable.radio_button_checked);
                  CrossRadioImg.setImageResource(R.drawable.radio_button_unchecked);
                  CrossImg.setAlpha(0.3f);
@@ -86,6 +95,9 @@ public class ChooseSymbolActivity extends AppCompatActivity implements View.OnTo
              public void onClick(View v) {
 
                  Intent intent = new Intent(    ChooseSymbolActivity.this,OfflineGameActivity.class);
+                 intent.putExtra("p1",playerOne);
+                 intent.putExtra("p2",playerTwo);
+                 intent.putExtra("ps",PICK_SIDE);
                   startActivity(intent);
              }
          });

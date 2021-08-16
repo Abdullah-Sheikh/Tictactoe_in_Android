@@ -94,6 +94,10 @@ public class OfflineGetPlayersNamesActivity extends AppCompatActivity implements
 
                     playerTwo = playerTwoName.getText().toString();
                     Intent intent = new Intent(OfflineGetPlayersNamesActivity.this,ChooseSymbolActivity.class);
+                    intent.putExtra("p1",playerOne);
+                    intent.putExtra("p2",playerTwo);
+
+
                     startActivity(intent);
                 }
             }
