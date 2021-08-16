@@ -32,7 +32,7 @@ public class AIGetPlayerNameActivity  extends AppCompatActivity implements View.
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
 
-        setContentView(R.layout.activity_offline_get_players_names);
+        setContentView(R.layout.activity_aiget_player_name);
 
         BackBtn = (ImageView) findViewById(R.id.ai_player_names_back_btn);
         playerNameTxt = (EditText) findViewById(R.id.ai_player_name_edttxt);

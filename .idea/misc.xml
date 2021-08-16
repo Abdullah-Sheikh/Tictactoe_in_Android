@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.13958333333333334" />
         <entry key="app/src/main/res/drawable/radio_button_checked.xml" value="0.23055555555555557" />
         <entry key="app/src/main/res/drawable/rounded_corners.xml" value="0.2388888888888889" />
+        <entry key="app/src/main/res/layout/activity_ai_choose_symbol.xml" value="0.1203125" />
         <entry key="app/src/main/res/layout/activity_aiget_player_name.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_choose_symbol.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24375" />
