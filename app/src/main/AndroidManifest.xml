@@ -10,11 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tictactoe">
         <activity
+            android:name=".AIGetPlayerNameActivity"
+            android:exported="true" />
+        <activity
             android:name=".OfflineGameActivity"
-            android:exported="true" >
-
-        </activity>
-
+            android:exported="true"></activity>
         <activity
             android:name=".ChooseSymbolActivity"
             android:exported="true" />
@@ -34,7 +34,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".MainActivity" />
     </application>

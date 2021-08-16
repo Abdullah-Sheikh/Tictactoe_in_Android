@@ -1,5 +1,7 @@
 package com.techsoldev.tictactoegame;
 
+import static com.techsoldev.tictactoegame.Minmax.findBestMove;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
@@ -12,6 +14,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -49,6 +52,18 @@ public class SplashActivity extends AppCompatActivity implements View.OnTouchLis
 
         settingsGifView  = (GifImageView) findViewById(R.id.seting_gifview);
         OfflineBtn = (Button) findViewById(R.id.btn_choice1);
+
+
+        char board[][] = {{ 'x', 'o', 'x' },
+                { 'o', 'o', 'x' },
+                { '_', '_', '_' }};
+
+        Minmax.Move bestMove = findBestMove(board);
+
+        System.out.printf("The Optimal Move is :\n");
+        System.out.printf("ROW: %d COL: %d\n\n",
+                bestMove.row, bestMove.col );
+        Log.w("myApp", "Row and col :  "+bestMove.row +bestMove.col);
 
        // settingsGifView.getBackground().Stop();
 

@@ -33,7 +33,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
 
 
     // Initialize the boxes
-    private ImageView Box_1,Box_2,Box_3,Box_4,Box_5,Box_6,Box_7,Box_8,Box_9;
+    private ImageView Box_1,Box_2,Box_3,Box_4,Box_5,Box_6,Box_7,Box_8,Box_9, backBtn;
 
     private CircularImageView playerOneImg , playerTwoImg;
 
@@ -96,6 +96,8 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         Box_7= (ImageView) findViewById(R.id.img_7);
         Box_8= (ImageView) findViewById(R.id.img_8);
         Box_9= (ImageView) findViewById(R.id.img_9);
+
+        backBtn= (ImageView) findViewById(R.id.offline_game_back_btn);
 
         playerOneImg = (CircularImageView) findViewById(R.id.player_one_img);
         playerTwoImg = (CircularImageView) findViewById(R.id.player_two_img);
@@ -177,6 +179,17 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         }
 
 
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                Intent intent = new Intent(OfflineGameActivity.this, OfflineGameMenuActivity.class);
+                finish();
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override
@@ -254,8 +267,10 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         // check the win condition
         checkForWin();
 
-
-
+        if(isGameActive)
+        {
+            checkdraw();
+        }
     }
 
 
@@ -428,11 +443,10 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
                     }
                     isGameActive = false;
                 }
+
             }
-            else
-            {
-                checkdraw();
-            }
+
+
         }
     }
 
