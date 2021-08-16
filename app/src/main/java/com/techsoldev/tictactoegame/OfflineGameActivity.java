@@ -1,21 +1,30 @@
 package com.techsoldev.tictactoegame;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import org.w3c.dom.Text;
@@ -30,6 +39,11 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
 
     private TextView playerOneWins, playerTwoWins;
     private TextView playerOneName, playerTwoName;
+
+    Dialog dialog;
+
+    int playerOneWinCount=0;
+    int playerTwoWinCount=0;
 
     int PICK_SIDE ;
     private String playerOne;
@@ -63,6 +77,10 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_offline_game);
 
 
+        dialog = new Dialog(this);
+
+
+
 
 
 
@@ -86,6 +104,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         playerOneName = (TextView)findViewById(R.id.player_one_name_txt);
         playerTwoName = (TextView)findViewById(R.id.player_two_name_txt);
         playerOneWins = (TextView)findViewById(R.id.player_one_win_count_txt);
+        playerTwoWins = (TextView)findViewById(R.id.player_two_won_txt);
 
 
         // if user click on particular Box the tag basically value of box (Box_1 has vlaue 1,Box_2 has vlaue 2 ,... ) send to the onClick function
@@ -99,6 +118,9 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         Box_8.setOnClickListener(this);
         Box_9.setOnClickListener(this);
 
+
+        playerOneWins.setText(String.valueOf(playerOneWinCount));
+        playerTwoWins.setText(String.valueOf(playerTwoWinCount));
 
         playerOne = getIntent().getStringExtra("p1");
         playerTwo = getIntent().getStringExtra("p2");
@@ -254,6 +276,20 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
 
                     if(storeActivePlayer ==Player_X)
                     {
+
+                        if(PICK_SIDE ==0)
+                        {
+                            playerOneWinCount=+1;
+                            playerOneWins.setText(String.valueOf(playerOneWinCount));
+                        }
+                        if(PICK_SIDE ==1)
+                        {
+
+                            playerTwoWinCount=+1;
+                            playerTwoWins.setText(String.valueOf(playerTwoWinCount));
+                        }
+
+
                         if(val0==1 && val1 ==2 && val2==3) {
 
                             Box_1.setBackgroundResource(R.drawable.cross_background);
@@ -303,12 +339,34 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
 
                         }
 
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
 
-                        Toast.makeText(this, "Player X wins", Toast.LENGTH_SHORT).show();
+                                celebrateDialog(0);
+                            }
+                        }, 750);
+
+
+                       // Toast.makeText(this, "Player X wins", Toast.LENGTH_SHORT).show();
                     }
 
                    else if(storeActivePlayer ==Player_0)
                     {
+                        if(PICK_SIDE ==0)
+                        {
+                            playerTwoWinCount=+1;
+                            playerTwoWins.setText(String.valueOf(playerTwoWinCount));
+
+                        }
+                        if(PICK_SIDE ==1)
+                        {
+                            playerOneWinCount=+1;
+                            playerOneWins.setText(String.valueOf(playerOneWinCount));
+
+                        }
+
                         if(val0==1 && val1 ==2 && val2==3) {
 
                             Box_1.setBackgroundResource(R.drawable.circle_background);
@@ -357,7 +415,17 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
                             Box_7.setBackgroundResource(R.drawable.circle_background);
 
                         }
-                        Toast.makeText(this, "Player 0 wins", Toast.LENGTH_SHORT).show();
+
+
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                celebrateDialog(1);
+                            }
+                        }, 750);
+                        //Toast.makeText(this, "Player 0 wins", Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -389,5 +457,103 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
             Toast.makeText(getBaseContext(), "Match Draw", Toast.LENGTH_SHORT).show();
             isGameActive = false;
         }
+    }
+
+
+    private void celebrateDialog(int player_check) {
+
+
+        dialog.setContentView(R.layout.celebrate_dialog);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        LottieAnimationView animationView = dialog.findViewById(R.id.celebrate_animationView);
+        LinearLayout linearLayout = dialog.findViewById(R.id.container_1);
+        Button quitBtn = dialog.findViewById(R.id.offline_game_quit_btn);
+        Button continueBtn = dialog.findViewById(R.id.offline_game_continue_btn);
+        ImageView playerImg = dialog.findViewById(R.id.offline_game_player_img);
+
+
+
+
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+              animationView.setVisibility(View.GONE);
+              linearLayout.setVisibility(View.VISIBLE);
+
+                if(player_check==0) {
+                    playerImg.setImageResource(R.drawable.cross);
+                } else  if(player_check==1) {
+                    playerImg.setImageResource(R.drawable.circle);
+                }
+            }
+        }, 2300);
+
+
+
+        quitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.dismiss();
+                Intent intent = new Intent(OfflineGameActivity.this, OfflineGameMenuActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        continueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.dismiss();
+               Restart();
+
+            }
+        });
+
+
+
+        dialog.show();
+    }
+
+
+    private void Restart()
+    {
+
+        for(int i =0 ;i<8;i++){
+           filledPos[i]= -1;
+        }
+
+        Box_1.setBackgroundResource(0);
+        Box_2.setBackgroundResource(0);
+        Box_3.setBackgroundResource(0);
+        Box_4.setBackgroundResource(0);
+        Box_5.setBackgroundResource(0);
+        Box_6.setBackgroundResource(0);
+        Box_7.setBackgroundResource(0);
+        Box_8.setBackgroundResource(0);
+        Box_9.setBackgroundResource(0);
+
+
+
+       Box_1.setImageResource(0);
+       Box_2.setImageResource(0);
+       Box_3.setImageResource(0);
+       Box_4.setImageResource(0);
+       Box_5.setImageResource(0);
+       Box_6.setImageResource(0);
+       Box_7.setImageResource(0);
+       Box_8.setImageResource(0);
+       Box_9.setImageResource(0);
+
+
+        isGameActive =true;
+
+
+
     }
 }
