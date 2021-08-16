@@ -36,7 +36,7 @@ public class OfflineGameMenuActivity extends AppCompatActivity implements View.O
     private boolean animationStarted = false;
 
     private GifImageView settingsGifView;
-    private Button WithAFriendBtn;
+    private Button WithAFriendBtn , WithAi;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
@@ -47,7 +47,8 @@ public class OfflineGameMenuActivity extends AppCompatActivity implements View.O
 
 
         settingsGifView  = (GifImageView) findViewById(R.id.seting_gifview_offline_menu);
-       WithAFriendBtn = (Button) findViewById(R.id.btn_choice2_offline_menu);
+        WithAFriendBtn = (Button) findViewById(R.id.btn_choice2_offline_menu);
+        WithAi = (Button) findViewById(R.id.btn_choice1_offline_menu);
 
         // settingsGifView.getBackground().Stop();
 
@@ -76,6 +77,15 @@ public class OfflineGameMenuActivity extends AppCompatActivity implements View.O
             public void onClick(View v) {
                 Intent intent = new Intent(OfflineGameMenuActivity.this,OfflineGetPlayersNamesActivity.class);
                startActivity(intent);
+            }
+        });
+
+        WithAi.setOnTouchListener(this);
+        WithAi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OfflineGameMenuActivity.this,AIGetPlayerNameActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -178,6 +188,13 @@ public class OfflineGameMenuActivity extends AppCompatActivity implements View.O
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         if (v == WithAFriendBtn) {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                v.setAlpha(0.5f);
+            } else {
+                v.setAlpha(1f);
+            }
+        }
+        else  if (v == WithAi) {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 v.setAlpha(0.5f);
             } else {
