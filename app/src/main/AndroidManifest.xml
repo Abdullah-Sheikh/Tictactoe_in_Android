@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tictactoe">
         <activity
+            android:name=".AiGameActivity"
+            android:exported="true" />
+        <activity
             android:name=".AiChooseSymbolActivity"
             android:exported="true" />
         <activity
