@@ -2,10 +2,7 @@ package com.techsoldev.tictactoegame;
 
 import static com.techsoldev.tictactoegame.Minmax.findBestMove;
 
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -13,7 +10,6 @@ import android.graphics.Color;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,8 +28,6 @@ import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.mikhaellopez.circularimageview.CircularImageView;
-
-import org.w3c.dom.Text;
 
 import pl.droidsonroids.gif.GifImageView;
 
@@ -199,6 +193,7 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
 
+
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -234,10 +229,14 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
 
             final MediaPlayer mp = MediaPlayer.create(this, R.raw.x);
             mp.start();
-            if (Build.VERSION.SDK_INT >= 26) {
-                vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-            } else {
-                vibrator.vibrate(200);
+
+
+            if(MyServices.VIBRATION_CHECK) {
+                if (Build.VERSION.SDK_INT >= 26) {
+                    vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+                } else {
+                    vibrator.vibrate(200);
+                }
             }
 
             clickImg.setImageResource(R.drawable.cross);
@@ -272,10 +271,13 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
 
             final MediaPlayer mp = MediaPlayer.create(this, R.raw.o);
             mp.start();
-            if (Build.VERSION.SDK_INT >= 26) {
-                vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-            } else {
-                vibrator.vibrate(200);
+
+            if(MyServices.VIBRATION_CHECK) {
+                if (Build.VERSION.SDK_INT >= 26) {
+                    vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+                } else {
+                    vibrator.vibrate(200);
+                }
             }
             clickImg.setImageResource(R.drawable.circle);
 

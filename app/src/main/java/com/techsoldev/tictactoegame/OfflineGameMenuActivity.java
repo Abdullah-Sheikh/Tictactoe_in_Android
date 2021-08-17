@@ -114,7 +114,6 @@ public class OfflineGameMenuActivity extends AppCompatActivity implements View.O
         });
 
 
-
     }
 
 
