@@ -46,7 +46,7 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
     private TextView playerOneWins, playerTwoWins;
     private TextView playerOneName;
 
-    Dialog dialog , drawdialog , robotdialog;
+    Dialog dialog , drawdialog , robotdialog, quitdialog;
 
     int playerOneWinCount=0;
     int playerTwoWinCount=0;
@@ -82,6 +82,7 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
         dialog = new Dialog(this);
         drawdialog = new Dialog(this);
         robotdialog = new Dialog(this);
+        quitdialog = new Dialog(this);
 
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
@@ -197,10 +198,7 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.dismiss();
-                Intent intent = new Intent(AiGameActivity.this, OfflineGameMenuActivity.class);
-                finish();
-                startActivity(intent);
+              quitDialogfun();
             }
         });
 
@@ -227,8 +225,10 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
         if(ActivePlayer ==  Player_X   &&  filledPos[gettingTag-1] == -1 && PICK_SIDE == Player_X )
         {
 
-            final MediaPlayer mp = MediaPlayer.create(this, R.raw.x);
-            mp.start();
+            if(MyServices.SOUND_CHECK) {
+                final MediaPlayer mp = MediaPlayer.create(this, R.raw.x);
+                mp.start();
+            }
 
 
             if(MyServices.VIBRATION_CHECK) {
@@ -269,8 +269,10 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
         else  if(ActivePlayer == Player_0  && filledPos[gettingTag-1] == -1  && PICK_SIDE == Player_0)
         {
 
-            final MediaPlayer mp = MediaPlayer.create(this, R.raw.o);
-            mp.start();
+            if(MyServices.SOUND_CHECK) {
+                final MediaPlayer mp = MediaPlayer.create(this, R.raw.o);
+                mp.start();
+            }
 
             if(MyServices.VIBRATION_CHECK) {
                 if (Build.VERSION.SDK_INT >= 26) {
@@ -509,8 +511,10 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
                         }
 
                         Handler handler = new Handler();
-                        final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
-                        mp.start();
+                        if(MyServices.SOUND_CHECK) {
+                            final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
+                            mp.start();
+                        }
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -591,8 +595,11 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
                         }
 
                         Handler handler = new Handler();
-                        final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
-                        mp.start();
+                        if(MyServices.SOUND_CHECK) {
+                            final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
+                            mp.start();
+                        }
+
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -628,8 +635,10 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
         {
             //  Toast.makeText(getBaseContext(), "Match Draw", Toast.LENGTH_SHORT).show();
             isGameActive = false;
-            final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
-            mp.start();
+            if(MyServices.SOUND_CHECK) {
+                final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
+                mp.start();
+            }
             DrawDialogfun();
 
         }
@@ -751,6 +760,37 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
         robotdialog.show();
+    }
+
+
+
+    private void    quitDialogfun() {
+
+
+        quitdialog.setContentView(R.layout.quit_dialog);
+        quitdialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        quitdialog.setCanceledOnTouchOutside(false);
+
+
+        Button quitBtn = quitdialog.findViewById(R.id.quit_btn);
+        Button continueBtn = quitdialog.findViewById(R.id.continue_btn);
+
+        quitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quitdialog.dismiss();
+                Intent intent = new Intent(AiGameActivity.this, OfflineGameMenuActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        continueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quitdialog.dismiss();
+            }
+        });
+        quitdialog.show();
     }
 
 

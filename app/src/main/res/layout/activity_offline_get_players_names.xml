@@ -50,7 +50,6 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:weightSum="10"
-        android:background="@drawable/rounded_corners"
         android:orientation="vertical"
         android:layout_weight="5.5">
 
@@ -86,7 +85,9 @@
             android:singleLine="true"
             android:layout_marginLeft="40dp"
             android:hint="Nick Name"
+            android:cursorVisible="true"
             android:textColor="#5C5C5C"
+            android:backgroundTint="#373737"
             android:textColorHint="#6E6E6E"
             android:maxLength="10"
             android:maxLines="1"
@@ -139,7 +140,6 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:weightSum="10"
-        android:background="@drawable/rounded_corners"
         android:orientation="vertical"
         android:layout_weight="5.5">
 
@@ -152,6 +152,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:textColor="#4C4C4C"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:layout_marginLeft="40dp"
@@ -169,12 +170,15 @@
         <EditText
             android:singleLine="true"
             android:maxLength="10"
+            android:textColor="#4C4C4C"
             android:maxLines="1"
+            android:backgroundTint="#4C4C4C"
             android:id="@+id/player_two_name_edttxt"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginLeft="40dp"
             android:hint="Nick Name"
+            android:textColorHint="#4C4C4C"
             android:textSize="18dp"
             android:layout_marginRight="40dp"
             android:layout_weight="1.5"></EditText>

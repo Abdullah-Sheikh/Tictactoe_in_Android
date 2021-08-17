@@ -48,7 +48,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
     private TextView playerOneName, playerTwoName;
     Vibrator vibrator;
 
-    Dialog dialog , drawdialog;
+    Dialog dialog , drawdialog,quitdialog;
 
     int playerOneWinCount=0;
     int playerTwoWinCount=0;
@@ -87,6 +87,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
 
         dialog = new Dialog(this);
         drawdialog = new Dialog(this);
+        quitdialog = new Dialog(this);
 
 
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
@@ -217,10 +218,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.dismiss();
-                Intent intent = new Intent(OfflineGameActivity.this, OfflineGameMenuActivity.class);
-                finish();
-                startActivity(intent);
+               quitDialogfun();
             }
         });
 
@@ -246,12 +244,17 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         // and change the Active player O
         if(ActivePlayer ==  Player_X   &&  filledPos[gettingTag-1] == -1 )
         {
-            final MediaPlayer mp = MediaPlayer.create(this, R.raw.x);
-            mp.start();
-            if (Build.VERSION.SDK_INT >= 26) {
-                vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-            } else {
-                vibrator.vibrate(200);
+            if(MyServices.SOUND_CHECK) {
+                final MediaPlayer mp = MediaPlayer.create(this, R.raw.x);
+                mp.start();
+            }
+
+            if(MyServices.VIBRATION_CHECK) {
+                if (Build.VERSION.SDK_INT >= 26) {
+                    vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+                } else {
+                    vibrator.vibrate(200);
+                }
             }
 
             if(PICK_SIDE ==0)
@@ -280,12 +283,18 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         else  if(ActivePlayer == Player_0  && filledPos[gettingTag-1] == -1)
         {
 
-            final MediaPlayer mp = MediaPlayer.create(this, R.raw.o);
-            mp.start();
-            if (Build.VERSION.SDK_INT >= 26) {
-                vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-            } else {
-                vibrator.vibrate(200);
+            if(MyServices.SOUND_CHECK) {
+                final MediaPlayer mp = MediaPlayer.create(this, R.raw.o);
+                mp.start();
+            }
+
+            if(MyServices.VIBRATION_CHECK) {
+
+                if (Build.VERSION.SDK_INT >= 26) {
+                    vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+                } else {
+                    vibrator.vibrate(200);
+                }
             }
 
             if(PICK_SIDE ==0)
@@ -405,8 +414,10 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
                         }
 
                         Handler handler = new Handler();
-                        final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
-                        mp.start();
+                        if(MyServices.SOUND_CHECK) {
+                            final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
+                            mp.start();
+                        }
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -483,8 +494,10 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
                         }
 
                         Handler handler = new Handler();
-                        final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
-                        mp.start();
+                        if(MyServices.SOUND_CHECK) {
+                            final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
+                            mp.start();
+                        }
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -516,8 +529,10 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         {
           //  Toast.makeText(getBaseContext(), "Match Draw", Toast.LENGTH_SHORT).show();
             isGameActive = false;
-            final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
-            mp.start();
+            if(MyServices.SOUND_CHECK) {
+                final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
+                mp.start();
+            }
             DrawDialogfun();
 
         }
@@ -647,4 +662,35 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
 
 
     }
+
+
+    private void    quitDialogfun() {
+
+
+        quitdialog.setContentView(R.layout.quit_dialog);
+        quitdialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        quitdialog.setCanceledOnTouchOutside(false);
+
+
+        Button quitBtn = quitdialog.findViewById(R.id.quit_btn);
+        Button continueBtn = quitdialog.findViewById(R.id.continue_btn);
+
+        quitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quitdialog.dismiss();
+                Intent intent = new Intent(OfflineGameActivity.this, OfflineGameMenuActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        continueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quitdialog.dismiss();
+            }
+        });
+        quitdialog.show();
+    }
+
 }
