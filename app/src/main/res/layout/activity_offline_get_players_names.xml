@@ -83,10 +83,13 @@
             android:id="@+id/player_one_name_edttxt"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:singleLine="true"
             android:layout_marginLeft="40dp"
             android:hint="Nick Name"
             android:textColor="#5C5C5C"
             android:textColorHint="#6E6E6E"
+            android:maxLength="10"
+            android:maxLines="1"
             android:textSize="18dp"
             android:layout_marginRight="40dp"
             android:layout_weight="1.5"></EditText>
@@ -164,6 +167,9 @@
             android:layout_weight="0.5"></View>
 
         <EditText
+            android:singleLine="true"
+            android:maxLength="10"
+            android:maxLines="1"
             android:id="@+id/player_two_name_edttxt"
             android:layout_width="match_parent"
             android:layout_height="0dp"

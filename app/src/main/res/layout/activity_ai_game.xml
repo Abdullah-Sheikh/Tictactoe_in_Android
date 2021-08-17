@@ -58,7 +58,7 @@
             android:orientation="vertical"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_marginTop="27.5dp"
+            android:layout_marginTop="22.5dp"
             android:layout_marginBottom="13dp"
             android:background="@drawable/count_background"
             android:layout_height="match_parent"
@@ -104,23 +104,19 @@
                 app:lottie_loop="true"/>
 
 
-
             <TextView
                 android:id="@+id/player_two_name_txt"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2.5"
-                android:text="Jason B."
-                android:textSize="16dp"
-                android:textColor="#353535"
                 android:layout_gravity="center"
-                android:gravity="center"
+                android:layout_weight="2.65"
                 android:fontFamily="@font/poppins_medium"
-                ></TextView>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.15"></View>
+                android:gravity="center"
+                android:text="Robot"
+                android:textColor="#353535"
+                android:textSize="14dp"></TextView>
+
+
 
         </LinearLayout>
 
@@ -396,12 +392,13 @@
                 android:layout_height="0dp"
                 android:layout_weight="2.5"
                 android:text="Jason B."
-                android:textSize="16dp"
+                android:textSize="14dp"
                 android:textColor="#353535"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:fontFamily="@font/poppins_medium"
                 ></TextView>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -420,7 +417,7 @@
             android:orientation="vertical"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_marginTop="27.5dp"
+            android:layout_marginTop="22.5dp"
             android:layout_marginBottom="13dp"
             android:background="@drawable/count_background"
             android:layout_height="match_parent"

@@ -12,9 +12,12 @@ import android.graphics.drawable.Animatable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -34,6 +37,7 @@ import pl.droidsonroids.gif.GifImageView;
 public class OfflineGameActivity extends AppCompatActivity implements View.OnClickListener  {
 
 
+
     // Initialize the boxes
     private ImageView Box_1,Box_2,Box_3,Box_4,Box_5,Box_6,Box_7,Box_8,Box_9, backBtn;
 
@@ -42,6 +46,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
 
     private TextView playerOneWins, playerTwoWins;
     private TextView playerOneName, playerTwoName;
+    Vibrator vibrator;
 
     Dialog dialog , drawdialog;
 
@@ -84,10 +89,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         drawdialog = new Dialog(this);
 
 
-
-
-
-
+        vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
         // link all the Boxes with Design (boxes in the activity_game.Xml  has the id so link with each Box)
         Box_1= (ImageView) findViewById(R.id.img_1);
@@ -207,7 +209,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
                         }
                         Intent intent = new Intent(OfflineGameActivity.this,SettingsActivity.class);
                         startActivity(intent);
-                        finish();
+
                     }
                 }, 750);
             }
@@ -244,6 +246,13 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         // and change the Active player O
         if(ActivePlayer ==  Player_X   &&  filledPos[gettingTag-1] == -1 )
         {
+            final MediaPlayer mp = MediaPlayer.create(this, R.raw.x);
+            mp.start();
+            if (Build.VERSION.SDK_INT >= 26) {
+                vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+            } else {
+                vibrator.vibrate(200);
+            }
 
             if(PICK_SIDE ==0)
             {
@@ -271,6 +280,13 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         else  if(ActivePlayer == Player_0  && filledPos[gettingTag-1] == -1)
         {
 
+            final MediaPlayer mp = MediaPlayer.create(this, R.raw.o);
+            mp.start();
+            if (Build.VERSION.SDK_INT >= 26) {
+                vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+            } else {
+                vibrator.vibrate(200);
+            }
 
             if(PICK_SIDE ==0)
             {
@@ -389,6 +405,8 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
                         }
 
                         Handler handler = new Handler();
+                        final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
+                        mp.start();
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -465,6 +483,8 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
                         }
 
                         Handler handler = new Handler();
+                        final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
+                        mp.start();
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -496,6 +516,8 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         {
           //  Toast.makeText(getBaseContext(), "Match Draw", Toast.LENGTH_SHORT).show();
             isGameActive = false;
+            final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
+            mp.start();
             DrawDialogfun();
 
         }

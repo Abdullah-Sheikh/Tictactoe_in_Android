@@ -89,15 +89,12 @@ public class OfflineGameMenuActivity extends AppCompatActivity implements View.O
             }
         });
 
-
-
         settingsGifView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Drawable drawable = settingsGifView.getDrawable();
                 if (drawable instanceof Animatable) {
                     ((Animatable) drawable).start();
-
 
                 }
                 Handler handler = new Handler();
@@ -110,7 +107,7 @@ public class OfflineGameMenuActivity extends AppCompatActivity implements View.O
                         }
                         Intent intent = new Intent(OfflineGameMenuActivity.this,SettingsActivity.class);
                         startActivity(intent);
-                        finish();
+
                     }
                 }, 750);
             }

@@ -14,9 +14,12 @@ import android.graphics.drawable.Animatable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -45,6 +48,7 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
 
     private CircularImageView playerOneImg ;
 
+    Vibrator vibrator;
     private TextView playerOneWins, playerTwoWins;
     private TextView playerOneName;
 
@@ -85,6 +89,7 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
         drawdialog = new Dialog(this);
         robotdialog = new Dialog(this);
 
+        vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
         // link all the Boxes with Design (boxes in the activity_game.Xml  has the id so link with each Box)
         Box_1= (ImageView) findViewById(R.id.img_1);
@@ -151,7 +156,6 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
             playerOneImg.setBorderWidth(10f);
             playerOneImg.setBorderColorStart(Color.parseColor("#EB469A"));
             playerOneImg.setBorderColorEnd(Color.parseColor("#7251DF"));
-
             playerOneImg.setBorderColorDirection(CircularImageView.GradientDirection.TOP_TO_BOTTOM);
 
             storeActivePlayer = 0;
@@ -190,7 +194,6 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
                         }
                         Intent intent = new Intent(AiGameActivity.this,SettingsActivity.class);
                         startActivity(intent);
-                        finish();
                     }
                 }, 750);
             }
@@ -229,6 +232,13 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
         if(ActivePlayer ==  Player_X   &&  filledPos[gettingTag-1] == -1 && PICK_SIDE == Player_X )
         {
 
+            final MediaPlayer mp = MediaPlayer.create(this, R.raw.x);
+            mp.start();
+            if (Build.VERSION.SDK_INT >= 26) {
+                vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+            } else {
+                vibrator.vibrate(200);
+            }
 
             clickImg.setImageResource(R.drawable.cross);
 
@@ -259,6 +269,14 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
         // and change the Active player X
         else  if(ActivePlayer == Player_0  && filledPos[gettingTag-1] == -1  && PICK_SIDE == Player_0)
         {
+
+            final MediaPlayer mp = MediaPlayer.create(this, R.raw.o);
+            mp.start();
+            if (Build.VERSION.SDK_INT >= 26) {
+                vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+            } else {
+                vibrator.vibrate(200);
+            }
             clickImg.setImageResource(R.drawable.circle);
 
             storeActivePlayer =ActivePlayer;
@@ -489,9 +507,12 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
                         }
 
                         Handler handler = new Handler();
+                        final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
+                        mp.start();
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
+
                                 if(PICK_SIDE==Player_X) {
                                     celebrateDialog(0);
                                 }else if(PICK_SIDE!=Player_X) {
@@ -568,6 +589,8 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
                         }
 
                         Handler handler = new Handler();
+                        final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
+                        mp.start();
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -603,6 +626,8 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
         {
             //  Toast.makeText(getBaseContext(), "Match Draw", Toast.LENGTH_SHORT).show();
             isGameActive = false;
+            final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
+            mp.start();
             DrawDialogfun();
 
         }
@@ -649,6 +674,7 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(intent);
             }
         });
+
 
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
