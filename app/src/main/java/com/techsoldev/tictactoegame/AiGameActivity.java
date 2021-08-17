@@ -641,6 +641,8 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
 
         dialog.setContentView(R.layout.celebrate_dialog);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCanceledOnTouchOutside(false);
+
 
         LottieAnimationView animationView = dialog.findViewById(R.id.celebrate_animationView);
         LinearLayout linearLayout = dialog.findViewById(R.id.container_1);
@@ -694,6 +696,8 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
 
         drawdialog.setContentView(R.layout.draw_dialog);
         drawdialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        drawdialog.setCanceledOnTouchOutside(false);
+
 
         Button quitBtn = drawdialog.findViewById(R.id.offline_game_draw_quit_btn);
         Button continueBtn = drawdialog.findViewById(R.id.offline_game_draw_continue_btn);
@@ -724,6 +728,8 @@ public class AiGameActivity extends AppCompatActivity implements View.OnClickLis
 
         robotdialog.setContentView(R.layout.robot_win_dialog);
         robotdialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        robotdialog.setCanceledOnTouchOutside(false);
+
 
         Button quitBtn = robotdialog.findViewById(R.id.offline_game_draw_quit_btn);
         Button continueBtn = robotdialog.findViewById(R.id.offline_game_draw_continue_btn);

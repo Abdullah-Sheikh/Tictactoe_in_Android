@@ -529,6 +529,8 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
 
         dialog.setContentView(R.layout.celebrate_dialog);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCanceledOnTouchOutside(false);
+
 
         LottieAnimationView animationView = dialog.findViewById(R.id.celebrate_animationView);
         LinearLayout linearLayout = dialog.findViewById(R.id.container_1);
@@ -584,6 +586,8 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
 
         drawdialog.setContentView(R.layout.draw_dialog);
         drawdialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCanceledOnTouchOutside(false);
+
 
         Button quitBtn = drawdialog.findViewById(R.id.offline_game_draw_quit_btn);
         Button continueBtn = drawdialog.findViewById(R.id.offline_game_draw_continue_btn);
