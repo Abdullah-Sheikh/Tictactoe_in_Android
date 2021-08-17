@@ -108,7 +108,7 @@ public class OfflineGameMenuActivity extends AppCompatActivity implements View.O
                         if (drawable instanceof Animatable) {
                             ((Animatable) drawable).stop();
                         }
-                        Intent intent = new Intent(OfflineGameMenuActivity.this,OfflineGameMenuActivity.class);
+                        Intent intent = new Intent(OfflineGameMenuActivity.this,SettingsActivity.class);
                         startActivity(intent);
                         finish();
                     }

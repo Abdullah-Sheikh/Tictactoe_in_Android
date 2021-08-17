@@ -29,12 +29,15 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 
 import org.w3c.dom.Text;
 
+import pl.droidsonroids.gif.GifImageView;
+
 public class OfflineGameActivity extends AppCompatActivity implements View.OnClickListener  {
 
 
     // Initialize the boxes
     private ImageView Box_1,Box_2,Box_3,Box_4,Box_5,Box_6,Box_7,Box_8,Box_9, backBtn;
 
+    private GifImageView  settingsGifView;
     private CircularImageView playerOneImg , playerTwoImg;
 
     private TextView playerOneWins, playerTwoWins;
@@ -98,6 +101,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         Box_9= (ImageView) findViewById(R.id.img_9);
 
         backBtn= (ImageView) findViewById(R.id.offline_game_back_btn);
+        settingsGifView = (GifImageView) findViewById(R.id.offline_game_seting_gifview);
 
         playerOneImg = (CircularImageView) findViewById(R.id.player_one_img);
         playerTwoImg = (CircularImageView) findViewById(R.id.player_two_img);
@@ -132,6 +136,11 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         playerTwoName.setText(playerTwo);
         ActivePlayer = PICK_SIDE;
         storeActivePlayer = PICK_SIDE;
+
+        Drawable drawable = settingsGifView.getDrawable();
+        if (drawable instanceof Animatable) {
+            ((Animatable) drawable).stop();
+        }
 
         if(PICK_SIDE==0)
         {
@@ -179,6 +188,30 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         }
 
 
+        settingsGifView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Drawable drawable = settingsGifView.getDrawable();
+                if (drawable instanceof Animatable) {
+                    ((Animatable) drawable).start();
+
+
+                }
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Drawable drawable = settingsGifView.getDrawable();
+                        if (drawable instanceof Animatable) {
+                            ((Animatable) drawable).stop();
+                        }
+                        Intent intent = new Intent(OfflineGameActivity.this,SettingsActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }, 750);
+            }
+        });
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

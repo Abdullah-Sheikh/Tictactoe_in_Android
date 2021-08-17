@@ -92,26 +92,18 @@
             android:weightSum="10"
             android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.15"></View>
 
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/player_two_img"
-                android:layout_width="match_parent"
-                android:layout_weight="6.85"
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_weight="7.1"
                 android:layout_gravity="center"
-                android:layout_height="0dp"
-                android:src="@drawable/profile_img"
-                app:civ_shadow="true"
-                app:civ_shadow_radius="1dp"
-                />
-
-            <View
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.25"></View>
+                app:lottie_rawRes="@raw/robot_animi"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"/>
+
+
 
             <TextView
                 android:id="@+id/player_two_name_txt"
@@ -477,7 +469,7 @@
         card_view:cardCornerRadius="40dp">
 
         <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/offline_game_seting_gifview"
+            android:id="@+id/ai_game_seting_gifview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="7.5dp"

@@ -54,16 +54,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnTouchLis
         OfflineBtn = (Button) findViewById(R.id.btn_choice1);
 
 
-        char board[][] = {{ 'x', 'o', 'x' },
-                { 'o', 'o', 'x' },
-                { '_', '_', '_' }};
 
-        Minmax.Move bestMove = findBestMove(board);
-
-        System.out.printf("The Optimal Move is :\n");
-        System.out.printf("ROW: %d COL: %d\n\n",
-                bestMove.row, bestMove.col );
-        Log.w("myApp", "Row and col :  "+bestMove.row +bestMove.col);
 
        // settingsGifView.getBackground().Stop();
 

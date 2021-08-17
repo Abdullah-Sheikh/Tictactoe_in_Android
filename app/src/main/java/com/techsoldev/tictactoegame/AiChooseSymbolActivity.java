@@ -93,7 +93,7 @@ public class AiChooseSymbolActivity extends AppCompatActivity implements View.On
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(    AiChooseSymbolActivity.this,OfflineGameActivity.class);
+                Intent intent = new Intent(    AiChooseSymbolActivity.this,AiGameActivity.class);
                 intent.putExtra("p1",playerName);
                 intent.putExtra("ps",PICK_SIDE);
                 startActivity(intent);

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+     <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="20dp">
+
+        <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:orientation="vertical">
+
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="375dp"
+                android:orientation="vertical">
+
+                <com.airbnb.lottie.LottieAnimationView
+
+                    android:id="@+id/draw_animationView"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="175dp"
+                    app:lottie_rawRes="@raw/robot_animi"
+                    app:lottie_autoPlay="true"
+                    android:layout_marginBottom="20dp"
+                    app:lottie_loop="true"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Robot Win !"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="22dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="#2C2C2C"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"></TextView>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        ></View>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/offline_game_draw_quit_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.5"
+                        android:text="Quit"
+                        android:textSize="18dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textStyle="bold"
+                        android:textColor="#FF3D00"
+                        android:textAllCaps="false"
+                        android:layout_gravity="center"
+
+                        android:background="@drawable/button_2">
+
+                    </androidx.appcompat.widget.AppCompatButton>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        ></View>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/offline_game_draw_continue_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.5"
+                        android:text="Continue"
+                        android:textSize="18dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textAllCaps="false"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:background="@drawable/button_1"></androidx.appcompat.widget.AppCompatButton>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        ></View>
+                </LinearLayout>
+
+            </LinearLayout>
+
+         </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</LinearLayout>

@@ -19,6 +19,7 @@
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.375" />
         <entry key="app/src/main/res/layout/celebrate_dialog.xml" value="0.145935960591133" />
         <entry key="app/src/main/res/layout/draw_dialog.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/robot_win_dialog.xml" value="0.24375" />
       </map>
     </option>
   </component>

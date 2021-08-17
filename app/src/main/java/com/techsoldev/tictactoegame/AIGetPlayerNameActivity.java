@@ -48,7 +48,7 @@ public class AIGetPlayerNameActivity  extends AppCompatActivity implements View.
                 } else {
 
                     playerName = playerNameTxt.getText().toString();
-                    Intent intent = new Intent(AIGetPlayerNameActivity.this,ChooseSymbolActivity.class);
+                    Intent intent = new Intent(AIGetPlayerNameActivity.this,AiChooseSymbolActivity.class);
                     intent.putExtra("p1",playerName);
                     startActivity(intent);
                 }
