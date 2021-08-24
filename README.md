@@ -15,7 +15,7 @@ https://user-images.githubusercontent.com/62107887/130690253-f670eb6f-33ff-4abf-
 
 
 
-#Tic Tac Toe is a free classic puzzle game also known as Noughts and Crosses.
+# Tic Tac Toe is a free classic puzzle game also known as Noughts and Crosses.
 
 ### Our free Tic Tac Toe game offers:
 
