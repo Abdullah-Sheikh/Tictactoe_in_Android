@@ -35,6 +35,11 @@ The Tic Tac Toe is a great way to pass your free time whether you're standing in
 
 
 
+<a href="https://play.google.com/store/apps/details?id=com.techsoldev.tictactoegame" target="_blank"> <img src="https://user-images.githubusercontent.com/62107887/130696039-68b4276e-8b78-4eb6-8aa9-ac2ac681e828.png" width="150" height="70" > </a>
+
+
+
+
 # App Screens
 
 
